@@ -1,0 +1,55 @@
+<html lang="de">
+
+<head>
+  <title>ToDoList App</title>
+
+  <link href="\styles\index.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body class="light_theme">
+
+  <h1>ToDoList Form </h1>
+
+  {{#each task}}
+  <form action="{{#if this.edit}}/{{this.id}}?_method=PUT{{else}}/{{/if}}" method="post">
+    <label for="title">Title: </label>
+    <input type="text" id="title" class="wide_input" name="title" placeholder="Enter Title..." {{#if this.edit}}
+      value="{{this.title}}" {{/if}} required />
+
+    <label for="important">Importance: </label>
+    <input type="number" id="important" class="wide_input" name="important" placeholder="" max="5" min="0" {{#if
+      this.edit}} value="{{this.important}}" {{/if}} required />
+
+    <label for="due_date">Due Date</label>
+    <input type="date" id="due_date" name="due_date" class="wide_input" {{#if this.edit}} value="{{this.due_date}}" {{/if}}
+       />
+    <br />
+     
+    <input type="checkbox" id="completed" name="completed" value="true" {{#if this.edit}}{{#if
+      this.completed}}checked{{/if}}{{/if}} />
+     
+    <label for="completed">Finished </label>
+    <br />
+
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" class="wide_input" rows="6"
+      required>{{#if this.edit}}{{this.description}}{{/if}}</textarea>
+    <br />
+
+
+    <button class="main_button" id="create" type="submit"> {{#if this.edit}} Update {{else}} Create {{/if}}</button>
+    <button class="main_button" id="create" type="submit"  formaction="{{#if this.edit}}/{{this.id}}?_method=PUT&overview=true{{else}}/?overview=true{{/if}}"> 
+    {{#if this.edit}} Update & Overview {{else}} Create &
+      Overview {{/if}} </button>
+    <a class="main_button" id="create" href="/"> Overview </a>
+
+  </form>
+  {{/each}}
+  <script src="../scripts/filter.js"></script>
+  <script src="../scripts/sort.js"></script>
+  <script src="../scripts/theme.js"></script>
+</body>
+
+</html>

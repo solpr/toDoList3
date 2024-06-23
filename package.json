@@ -1,0 +1,44 @@
+{
+    "name": "to_do_list",
+    "version": "1.0.0",
+    "description": "Working submission",
+    "main": "public/scripts/main.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "stylelint": "stylelint \"**/*.css\"",
+        "eslint": "eslint \"**/*.js\"",
+        "all": "npm run stylelint && npm run eslint  && node -e \"console.log('npm run all completed')\""
+    },
+    "author": "Solomon Araya",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^8.14.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "prettier": "2.6.2",
+        "stylelint": "^14.7.1",
+        "stylelint-config-standard": "^25.0.0"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "ejs": "^3.1.10",
+        "express": "^4.19.2",
+        "express-handlebars": "^7.1.2",
+        "handlebars": "^4.7.8",
+        "html-validator": "^6.0.1",
+        "method-override": "^3.0.0",
+        "moment": "^2.30.1",
+        "uuid": "^9.0.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/solpr/toDoList.git"
+    },
+    "bugs": {
+        "url": "https://github.com/solpr/toDoList/issues"
+    },
+    "homepage": "https://github.com/solpr/toDoList#readme"
+}

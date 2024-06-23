@@ -1,0 +1,129 @@
+<head>
+  <title>ToDoList App </title>
+
+  {{! <script src="/model/todo.json" type="application/json" ></script> }}
+  <link href="/styles/index.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body class="light_theme">
+  <h1>ToDoList</h1>
+  <div class="button-container-primary">
+    <a href="/form/" type="button" id="modal_form" class="main_button">
+      Create todo
+    </a>
+    <button type="button" id="toggle_theme" class="main_button">
+      Toggle style
+    </button>
+  </div>
+
+  <div class="button-container-secondary">
+    <div class="left-buttons">
+      <button
+        type="button"
+        data-state="up"
+        id="sort_by_name"
+        class="main_button"
+      >
+        Name
+      </button>
+      <button
+        type="button"
+        data-state="up"
+        id="sort_by_due_date"
+        class="main_button"
+      >
+        By Due Date
+      </button>
+      <button
+        type="button"
+        id="sort_by_creation_date"
+        data-state="up"
+        class="main_button"
+      >
+        By Creation Date
+      </button>
+      <button
+        type="button"
+        id="sort_by_importance"
+        data-state="up"
+        class="main_button"
+      >
+        By Importance
+      </button>
+    </div>
+    <div class="right-button">
+      <span id="filter_detail"> Currently Showing All </span>
+      <button
+        type="button"
+        id="sort_by_completeness"
+        data-state="up"
+        class="main_button"
+      >
+        Filter completed
+      </button>
+      
+    </div>
+  </div>
+
+<div id="current_filter">
+</div>
+  <div id="todo-lists">
+    {{#each tasks}}
+      <div
+        class="row_container"
+        id="{{this.id}}"
+        data-due_date="{{this.due_date}}"
+        data-completed="{{this.completed}}"
+        data-title="{{this.title}}"
+        data-description="{{this.description}}"
+        data-important="{{this.important}}"
+        data-creation_date="{{this.creation_date}}"
+      >
+        <div class="raw_container_content">
+          <div class="input-container">
+            <div class="input-group">
+              <p class="input_text_light"> {{#relativeTime this.due_date}}{{/relativeTime}}</p>
+              <p class="input_text_light">
+                {{#if this.completed}}
+                  <input
+                    type="checkbox"
+                    id="state"
+                    name="state"
+                    disabled
+                    checked
+                  />
+                  Completed
+                {{else}}
+                  <input type="checkbox" id="state" name="state" disabled />
+                  Open
+                {{/if}}</p>
+            </div>
+            <div class="sub-group">
+              <p class="input_text_light"> {{this.title}} </p>
+              <p class="input_text_light"> {{this.description}}</p>
+            </div>
+          </div>
+          <div class="edit-container">
+            <span id="mytext3" class="input_text_light">
+              {{#importance this.important}}{{/importance}}
+            </span>
+            <a href="/edit/{{this.id}}" class="main_button">
+              Edit
+            </a>
+          </div>
+        </div>
+        <hr />
+        <br />
+      </div>
+      
+    {{/each}}
+
+  </div>
+    
+    <div id="alert" class="hidden"> Keine Todo gefunden!?</h1>
+    
+  <script src="../scripts/filter.js"></script>
+  <script src="../scripts/sort.js"></script>
+  <script src="../scripts/theme.js"></script>
+
+</body>
